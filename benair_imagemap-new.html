@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benair Group Banner</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .banner-wrapper {
+      width: 100%;
+      max-width: 2000px;
+      position: relative;
+    }
+    .banner-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-wrapper">
+    <img
+      id="benair-img"
+      src="https://raw.githubusercontent.com/praveenisac/grace/refs/heads/main/benair-kmg.jpg"
+      alt="Benair Group – 25 Years of Pioneering in the HVAC Industry"
+      usemap="#benair-map"
+    >
+
+    <map name="benair-map" id="benair-map">
+
+      <!-- ① Benair Group Logo — top left -->
+      <area
+        shape="rect"
+        coords="38,20,300,138"
+        href="https://www.benairgroup.com"
+        target="_blank"
+        alt="Benair Group"
+        title="Benair Group"
+      >
+
+      <!-- ② Benair + Carrier Logos — top right (Partners in Excellence block) -->
+      <area
+        shape="rect"
+        coords="1360,22,1960,172"
+        href="https://www.benairgroup.com"
+        target="_blank"
+        alt="Benair | Carrier – Partners in Excellence"
+        title="Benair | Carrier – Partners in Excellence"
+      >
+
+      <!-- ③ 800 BENAIR call box — bottom left pill -->
+      <area
+        shape="rect"
+        coords="108,422,618,526"
+        href="tel:800236247"
+        target="_self"
+        alt="Call 800 236247 BENAIR"
+        title="Call 800-BENAIR"
+      >
+
+      <!-- ④ Facebook icon -->
+      <area
+        shape="circle"
+        coords="60,644,28"
+        href="https://www.facebook.com/BenairAC?mibextid=ZbWKwL"
+        target="_blank"
+        alt="Facebook"
+        title="Benair on Facebook"
+      >
+
+      <!-- ⑤ Instagram icon -->
+      <area
+        shape="circle"
+        coords="128,644,28"
+        href="https://www.instagram.com/benairgroup?igsh=MWZkY2p3aHltOWNiag%3D%3D"
+        target="_blank"
+        alt="Instagram"
+        title="Benair on Instagram"
+      >
+
+      <!-- ⑥ LinkedIn icon -->
+      <area
+        shape="circle"
+        coords="196,644,28"
+        href="https://www.linkedin.com/company/benair-group"
+        target="_blank"
+        alt="LinkedIn"
+        title="Benair on LinkedIn"
+      >
+
+      <!-- ⑦ YouTube icon -->
+      <area
+        shape="circle"
+        coords="264,644,28"
+        href="https://www.youtube.com/@benairgroup2965"
+        target="_blank"
+        alt="YouTube"
+        title="Benair on YouTube"
+      >
+
+      <!-- ⑧ WhatsApp icon -->
+      <area
+        shape="circle"
+        coords="332,644,28"
+        href="https://wa.me/800236247"
+        target="_blank"
+        alt="WhatsApp"
+        title="Benair on WhatsApp"
+      >
+
+      <!-- ⑨ Website — globe icon + BENAIRGROUP.COM text -->
+      <area
+        shape="rect"
+        coords="390,614,660,678"
+        href="https://www.benairgroup.com"
+        target="_blank"
+        alt="benairgroup.com"
+        title="Visit benairgroup.com"
+      >
+
+    </map>
+  </div>
+
+  <script>
+    /**
+     * Responsive Image Map Rescaler
+     * Coords are authored at natural image size (2000 x 698).
+     * On resize, all coords are scaled proportionally to rendered width.
+     */
+    (function () {
+      const img       = document.getElementById('benair-img');
+      const map       = document.getElementById('benair-map');
+      const NATURAL_W = 2000;
+
+      // Snapshot original coords once
+      const areas = Array.from(map.querySelectorAll('area')).map(function(area) {
+        return {
+          el:     area,
+          coords: area.coords.split(',').map(Number)
+        };
+      });
+
+      function rescale() {
+        var ratio = img.offsetWidth / NATURAL_W;
+        areas.forEach(function(item) {
+          item.el.coords = item.coords.map(function(c) {
+            return Math.round(c * ratio);
+          }).join(',');
+        });
+      }
+
+      if (img.complete) {
+        rescale();
+      } else {
+        img.addEventListener('load', rescale);
+      }
+      window.addEventListener('resize', rescale);
+    })();
+  </script>
+
+</body>
+</html>
